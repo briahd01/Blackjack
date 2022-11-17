@@ -12,7 +12,7 @@
 
 class Card {
 	// string operator to output a card
-	friend std::ostream& operator<<(std::ostream& os, const Card& card);
+	friend std::ostream& operator<<(std::ostream& os, Card& card);
 
 public:
 	// constructor takes in a parameter int value
@@ -36,12 +36,14 @@ public:
 private:
 	// holds an int representing the card number in a deck
 	int _cardNumber;
+
+	// class variables
 	static std::string faceAbbreviations[];
 	static std::string suitLetters[];
 	static std::string faceNames[];
 	static std::string suitNames[];
 };
 
-std::ostream& operator<<(std::ostream& os, const Card& card);
+std::ostream& operator<<(std::ostream& os, Card& card);
 
 #endif /* Card_hpp */

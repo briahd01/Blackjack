@@ -12,9 +12,9 @@ CardDeck::CardDeck() {
 void CardDeck::freshDeck() {
 	// loop through numbers 0 - 51 to get every card
 	for (int i = 0; i < 52; i++) {
-		Card card(i);
 		// create a new card object to store in the list of cards
-		_cards[i] = card;
+		Card card(i);
+		_cards.push_back(card);
 	}
 }
 
@@ -32,25 +32,33 @@ void CardDeck::shuffle() {
 		_cards[i] = _cards[num];
 	}
 }
-
+// determines if the deck still has cards left
 bool CardDeck::hasCards() {
-
 	return (_cards.size() > 0);
-
 }
 
+// determines the number of cards left
 int CardDeck::cardsLeft() {
-
 	return _cards.size();
-
 }
 
+// deals a card when playing a game
 Card CardDeck::dealOne() {
-
+	// make sure there are still cards to deal
 	if (_cards.size() == 0) {
 		std::cout << "CardDeck out of cards" << std::endl;
 	}
 
-	return _cards.back();
+	// access the last card
+	Card card = _cards.back();
+	// remove it from the list
+	_cards.pop_back();
 
+	return card;
+}
+
+std::ostream& operator<<(std::ostream& os, CardDeck& card) {
+	for (int i = 0; i < 52; i++) {
+
+	}
 }

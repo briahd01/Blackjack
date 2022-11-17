@@ -6,7 +6,6 @@
 #include "Card.hpp"
 
 // class variables
-
 // one or two characters face abbreviations for card
 std::string faceAbbreviations[] = { "a", "2", "3", "4", "5", "6", "7", "8", "9", "10", "j", "q", "k" };
 
@@ -41,6 +40,7 @@ std::string Card::faceName() {
 
 // returns string of the suitname
 std::string Card::suitName() {
+	// calculate the index for suitNum using the cardNumber
 	int suitNum = _cardNumber / 13;
 	std::string suit = suitNames[suitNum];
 
@@ -65,8 +65,10 @@ int Card::blackjackValue() {
 }
 
 
+// output operator override
+std::ostream& operator<<(std::ostream& os, Card& card) {
 
-std::ostream& operator<<(std::ostream& os, const Card& card) {
+	// gets the faceName and suitName to form a string
 	os << card.faceName() << "of" << card.suitName();
 
 	return os;
