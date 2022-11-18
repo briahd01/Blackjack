@@ -5,7 +5,7 @@
 #ifndef CardDeck_hpp
 #define CardDeck_hpp
 
-#include "Card.cpp"
+#include "Card.hpp"
 #include <vector>
 
 class CardDeck {

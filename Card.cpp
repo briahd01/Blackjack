@@ -2,26 +2,25 @@
 // 11/16/22
 // Card.cpp
 
-
 #include "Card.hpp"
 
 // class variables
 // one or two characters face abbreviations for card
-std::string faceAbbreviations[] = { "a", "2", "3", "4", "5", "6", "7", "8", "9", "10", "j", "q", "k" };
+const std::string Card::faceAbbreviations[13] = { "a", "2", "3", "4", "5", "6", "7", "8", "9", "10", "j", "q", "k" };
 
 // one character abbreviation for the suit names
-std::string suitLetters[] = {"c", "s", "h", "d"};
+const std::string Card::suitLetters[4] = {"c", "s", "h", "d"};
 
 // full names for each face
-std::string faceNames[] = { "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
+const std::string Card::faceNames[13] = { "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
 							"Jack", "Queen", "King" };
 
 // full names for each suit
-std::string suitNames[] = { "Clubs", "Spades", "Hearts", "Diamonds" };
+const std::string Card::suitNames[4] = { "Clubs", "Spades", "Hearts", "Diamonds" };
 
 
 // constructor takes in a parameter int value
-Card::Card(int value = 0) {
+Card::Card(int value) {
 	if (value < 0 || value > 51) {
 		std::cout << "invalid int for Card initialization (must be 0 to 51):" << std::endl;
 	}
@@ -30,7 +29,7 @@ Card::Card(int value = 0) {
 }
 
 // returns the string of the face name
-std::string Card::faceName() {
+std::string Card::faceName() const {
 	// calculate the index for faceNum using the cardNumber
 	int faceNum = _cardNumber % 13;
 	std::string face = faceNames[faceNum];
@@ -39,7 +38,7 @@ std::string Card::faceName() {
 }
 
 // returns string of the suitname
-std::string Card::suitName() {
+std::string Card::suitName() const {
 	// calculate the index for suitNum using the cardNumber
 	int suitNum = _cardNumber / 13;
 	std::string suit = suitNames[suitNum];
@@ -55,7 +54,7 @@ int Card::blackjackValue() {
 
 	// if an ace, the value is 11
 	if (value == 1) {
-		value == 11;
+		value = 11;
 	}
 	// if the cards are 10, j, q, or k, the value is 10
 	else if (value > 10) {

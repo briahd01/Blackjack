@@ -58,7 +58,10 @@ Card CardDeck::dealOne() {
 }
 
 std::ostream& operator<<(std::ostream& os, CardDeck& card) {
+	// loop through every card in the deck
 	for (int i = 0; i < 52; i++) {
-
+		// output the card
+		os << card._cards[i];
 	}
+	return os;
 }

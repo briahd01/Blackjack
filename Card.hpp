@@ -13,10 +13,11 @@
 class Card {
 	// string operator to output a card
 	friend std::ostream& operator<<(std::ostream& os, Card& card);
+	friend class CardDeck;
 
 public:
 	// constructor takes in a parameter int value
-	Card(int value = 0);
+	Card(int value);
 
 	// comparison operator for comparing if two cards are equal
 	bool operator==(const Card& other) const { return _cardNumber == other._cardNumber;  }
@@ -25,10 +26,10 @@ public:
 	bool operator!=(const Card& other) const { return _cardNumber != other._cardNumber;  }
 
 	// returns the string of the face name
-	std::string faceName();
+	std::string faceName() const;
 
 	// returns string of the suitname
-	std::string suitName();
+	std::string suitName() const;
 
 	// returns the value of the card based on suit and face name
 	int blackjackValue();
@@ -38,10 +39,10 @@ private:
 	int _cardNumber;
 
 	// class variables
-	static std::string faceAbbreviations[];
-	static std::string suitLetters[];
-	static std::string faceNames[];
-	static std::string suitNames[];
+	static const std::string faceAbbreviations[13];
+	static const std::string suitLetters[4];
+	static const std::string faceNames[13];
+	static const std::string suitNames[4];
 };
 
 std::ostream& operator<<(std::ostream& os, Card& card);
