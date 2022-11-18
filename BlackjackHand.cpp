@@ -100,20 +100,40 @@ bool BlackjackHand::operator!=(const BlackjackHand& other) const {
 
 // true if one hand is less than or equal to the other
 bool BlackjackHand::operator<=(const BlackjackHand& other) const {
-
+	return (*this < other) or (*this == other);
 }
 
 // true if one hand has a greater score than the other
 bool BlackjackHand::operator>(const BlackjackHand& other) const {
-
+	return !(*this <= other);
 }
 
 // true if one hand is greater than or equal to the other hand
 bool BlackjackHand::operator>=(const BlackjackHand& other) const {
-
+	return !(*this < other);
 }
 
-
+// string override
 std::ostream& operator<<(std::ostream& os, BlackjackHand& hand) {
+	std::string name = hand._name;
 
+	// check if the name is not empty to add colons after it
+	if (name != "") {
+		name = name + ":";
+	}
+
+	// if the player busted, add "busted" next to the name and return the string
+	if (hand._total > 21) {
+		name = name + "busted";
+		os << name;
+		return os;
+	}
+	else {
+        // convert total to a string
+		std::string total = std::to_string(hand._total);
+		// add the total next to the name and return the string
+		name = name + total;
+		os << name;
+		return os;
+	}
 }
