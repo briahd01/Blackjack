@@ -26,7 +26,7 @@ void CardDeck::shuffle() {
 	// loop through cards
 	for (int i = 0; i < 52; i++) {
 		// get random number
-		int num = rand();
+		int num = rand() % 52;
 
 		// switch the positions of the card using the random number
 		_cards[i] = _cards[num];

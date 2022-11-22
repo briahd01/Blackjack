@@ -68,7 +68,7 @@ int Card::blackjackValue() {
 std::ostream& operator<<(std::ostream& os, Card& card) {
 
 	// gets the faceName and suitName to form a string
-	os << card.faceName() << "of" << card.suitName();
+	os << card.faceName() << " of " << card.suitName();
 
 	return os;
 }

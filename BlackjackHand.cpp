@@ -21,7 +21,7 @@ void BlackjackHand::reset() {
 
 // determines if a player can still get a card
 bool BlackjackHand::canGetCard() {
-	return (_total > _stayValue);
+	return (_total < _stayValue);
 }
 
 // adds a new card to the hand
@@ -124,7 +124,7 @@ std::ostream& operator<<(std::ostream& os, BlackjackHand& hand) {
 
 	// if the player busted, add "busted" next to the name and return the string
 	if (hand._total > 21) {
-		name = name + "busted";
+		name = name + " busted";
 		os << name;
 		return os;
 	}
@@ -132,7 +132,7 @@ std::ostream& operator<<(std::ostream& os, BlackjackHand& hand) {
         // convert total to a string
 		std::string total = std::to_string(hand._total);
 		// add the total next to the name and return the string
-		name = name + total;
+		name = name + " " + total;
 		os << name;
 		return os;
 	}
